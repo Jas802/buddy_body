@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 3) do
     t.text "description"
     t.integer "length"
     t.string "difficulty"
+    t.integer "trainer_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,6 +1,11 @@
 class WorkoutsController < ApplicationController
     def index
-        @workout = Workouts.all
+      @trainer = Trainer.find_by(id: params[:trainer_id])
+      if @trainer
+        @workouts = @trainer.workouts #loads only this trainer's workouts
+      else
+        @workout = Workouts.all #loads all workouts
+      end
     end
 
     def show
@@ -9,6 +14,11 @@ class WorkoutsController < ApplicationController
     
       def new
         @workout = Workout.new
+      end
+
+      def create
+        workout = Workout.create(workout_params)
+        redirect_to workout_path(workout)
       end
 
       def update
