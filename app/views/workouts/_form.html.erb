@@ -1,0 +1,30 @@
+<%= form_for @workout do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited this workout from being created:
+      </h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_for(@workout) do |f|%>
+
+<%= f.label :name%><br>
+<%= f.text_field :name, placeholder: :name %>
+<br>
+<%= f.label :length%><br> 
+<%= f.text_field :length, placeholder: :length_in_minutes %>
+<br>
+<%= f.label :difficulty%><br>
+<%= f.text_field :difficulty, placeholder: :begginner_intermediate_or_expert %>
+<br>
+<%= f.label :description%><br>
+<%= f.text_field :description, placeholder: :workout_descriprion %>
+
+<% end %>

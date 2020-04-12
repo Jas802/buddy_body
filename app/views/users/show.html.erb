@@ -1,0 +1,6 @@
+<h2>Hello, <%= current_user.username %></h2>
+
+
+
+<%= link_to "See Workouts", workouts_path %>
+<%= button_to "Logout", '/destroy', method: :delete%>
