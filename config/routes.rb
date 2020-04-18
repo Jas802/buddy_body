@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   root 'sessions#welcome'
-  resources :users, only: [:new, :create, :show]
-  resources :workouts, only: [:index, :new, :create, :show]
-  get 'login', to: 'sessions#login'
+  resources :users, only: [:new, :create, :show] do
+    resources :workouts, only: [:index, :show]
+  end
+  resources :trainers, only:[:index, :show] do
+    resources :workouts, only: [:index, :new, :create, :show, :edit]
+  end
+  resources :workouts
+  get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'
-  delete '/session/', to: 'session#destroy'
-  get '/auth/facebook/callback' => 'sessions#create_from_facebook'
+  get 'session/delete', as: :logout 
+  delete 'session', to: 'sessions#delete'
+  get "/auth/:provider/callback" => "sessions#create_from_github"
 end

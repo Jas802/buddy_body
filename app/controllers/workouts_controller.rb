@@ -1,11 +1,6 @@
 class WorkoutsController < ApplicationController
     def index
-      @trainer = Trainer.find_by(id: params[:trainer_id])
-      if @trainer
-        @workouts = @trainer.workouts #loads only this trainer's workouts
-      else
-        @workout = Workouts.all #loads all workouts
-      end
+        @workouts = Workout.all #loads all workouts
     end
 
     def show

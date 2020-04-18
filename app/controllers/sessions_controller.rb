@@ -2,7 +2,11 @@ class SessionsController < ApplicationController
     skip_before_action :require_login, only: [:new, :create, :welcome]
     helper_method :user_is_authenticated
   
-
+    def new
+      @user = User.new
+      render 'login'
+    end
+   
     def welcome
     end
   
@@ -10,28 +14,24 @@ class SessionsController < ApplicationController
       @user = User.find_by(username: params[:username])
       if @user && @user.authenticate(params[:password])
          session[:user_id] = @user.id
-         redirect_to '/welcome'
+         flash[:notice] = "Logged in successfully"
+         redirect_to user_path
       else
-         redirect_to '/login'
+        flash.now[:alert] = "Invalid username/password"
+         redirect_to new_user_path
       end
    end
 
-   def create_from_facebook
-    binding.pry
-    @user = User.find_or_create_by(uid: auth['uid']) do |u|
-      u.name = auth['info']['name']
-      u.email = auth['info']['email']
-      u.image = auth['info']['image']
+   def create_from_github
+    auth = request.env["omniauth.auth"]     
+    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)     
+    session[:user_id] = user.id     redirect_to root_path, :notice => "Signed in!"
     end
- 
-    session[:user_id] = @user.id
- 
-    render 'sessions/welcome'
-   end
 
   
-    def destroy
-      session.delete("user_id")
+    def delete
+      session[:user_id] = nil
+      flash[:notice] = "You have been logged out"
       redirect_to root_path
     end
 

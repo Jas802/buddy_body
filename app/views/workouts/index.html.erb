@@ -1,9 +1,11 @@
 <h1>Workouts</h1>
 
-<%=@workout.each do |workout|%>
+<%=@workouts.each do |workout|%>
     <%=workout.name%>
     <%=workout.length%>
     <%=workout.difficulty%>
     <%=link_to "#{workout.description}" %>
     <% end %>
+
+    <%=link_to "New Workout", new_workout_path %>
 
