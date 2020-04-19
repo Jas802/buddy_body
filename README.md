@@ -1,5 +1,4 @@
 To dos:
-Nested routs in routs.rb
-Finish views
-Add outside authorization
-connect dots
+ list all trainers
+ create trainer
+ show trainer - link to create workout trainer_workout_path

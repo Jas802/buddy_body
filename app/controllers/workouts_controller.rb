@@ -13,6 +13,9 @@ class WorkoutsController < ApplicationController
 
       def create
         workout = Workout.create(workout_params)
+        workout.user = current_user
+        workout.trainer = params[:trainer_id]
+        
         redirect_to workout_path(workout)
       end
 
@@ -27,7 +30,7 @@ class WorkoutsController < ApplicationController
 
     def workout_params
       params.require(:workout).permit(
-        :name,
+        :title,
         :description,
         :length,
         :difficulty,

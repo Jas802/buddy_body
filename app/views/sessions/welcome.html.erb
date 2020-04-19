@@ -2,7 +2,7 @@
 
 <% if user_is_authenticated %>
     <h3>Hello, <%= current_user.username %></h3>
-    <%= link_to "Show Workouts", 'workouts/index' %>
+    <%= link_to "Show Trainers", trainers_path %>
 <%end%>
 
 <%= button_to "Login", '/login', method: :get%>

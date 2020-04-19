@@ -4,9 +4,10 @@ class TrainersController < ApplicationController
     end
 
     def show
-        @trainer = Trainer.find(params[:id])
+        @trainer = Trainer.find_by(id: params[:id])
     end
 
     def new
+       @trainer = Trainer.new 
     end
 end

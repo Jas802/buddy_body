@@ -27,6 +27,8 @@
 <%= f.label :description%><br>
 <%= f.text_field :description, placeholder: :workout_descriprion %>
 <br>
+<%= f.hidden_field :user_id %><br />
+<%= f.hidden_field :trainer_id %><br />
 <%= f.submit %>
 <% end %>
 <%end%>

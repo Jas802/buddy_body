@@ -1,7 +1,7 @@
 <h1>Workouts</h1>
 
 <%=@workouts.each do |workout|%>
-    <%=workout.name%>
+    <%=workout.title%>
     <%=workout.length%>
     <%=workout.difficulty%>
     <%=link_to "#{workout.description}" %>

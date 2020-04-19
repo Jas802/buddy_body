@@ -1,4 +1,4 @@
-<%= @trainer.name %>
+<h2> <%= @trainer %> </h2>
 <br>
-<%= link_to "#{@trainer.name}'s workouts", trainer_workouts_path(@trainer) %>
+<%= link_to "#{@trainer}'s workouts", trainer_workouts_path(@trainer) %>
 <%= link_to "Create a new workout", new_trainer_workout_path(@trainer) %>
