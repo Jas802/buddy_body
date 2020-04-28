@@ -2,9 +2,9 @@
 
   <div class="info">
     <p><strong>Title:</strong> <%= @workout.title %></p>
-    <p><strong>Total Number of Users:</strong> <%= @workout.users.count %></p>
     <p><strong>Workout Length:</strong> <%= @workout.length %> minutes</p>
     <p><strong>Workout Difficulty:</strong> <%= @workout.difficulty %></p>
+    <p><strong>Description:</strong> <%=@workout.description %></p>
       <%= form_for @workout do |f| %>
         <%= f.hidden_field :user_id %><br />
         <%= f.hidden_field :trainer_id %><br />

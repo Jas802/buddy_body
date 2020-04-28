@@ -2,5 +2,6 @@
 
 
 
-<%= link_to "See Workouts", workouts_path %>
-<%= button_to "Logout", '/destroy', method: :delete%>
+<%= link_to "Buddy Body's Workouts", user_workouts_path(current_user) %><br>
+<%= link_to "Buddy Body's Trainers", trainers_path%><br>
+<%= button_to "Logout", logout_path, method: :delete%>

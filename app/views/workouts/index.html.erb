@@ -1,11 +1,10 @@
 <h1>Workouts</h1>
-
-<%=@workouts.each do |workout|%>
-    <%=workout.title%>
-    <%=workout.length%>
-    <%=workout.difficulty%>
-    <%=link_to "#{workout.description}" %>
+<ul>
+<%@workouts.each do |workout|%>
+    <h3><%=workout.title%></h3> <br>
+    <p>Length - <%=workout.length%>minutes </p> <br>
+    <p> Difficulty Level - <%=workout.difficulty%> </p> <br>
+    <%=link_to "Workout Description", workout_path(workout) %><br>
     <% end %>
-
-    <%=link_to "New Workout", new_workout_path %>
+    </ul>
 

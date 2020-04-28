@@ -10,4 +10,17 @@ class TrainersController < ApplicationController
     def new
        @trainer = Trainer.new 
     end
+
+    def create
+        trainer = Trainer.create(trainer_params)
+        redirect_to trainer_path(trainer)
+    end
+
+    private
+    def trainer_params
+        params.require(:trainer).permit(
+            :name,
+            :bio
+        )
+    end
 end
