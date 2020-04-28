@@ -1,7 +1,11 @@
+<div class="jumbotron text-center">
 <h2> <%= @trainer.name %> </h2>
+</div>
 <br>
+<div class="text-center">
 <h3> Bio </h3>
 <p> <%= @trainer.bio%> </p>
+</div>
 <br>
 <%= link_to "#{@trainer.name}'s workouts", trainer_workouts_path(@trainer) %><br>
 <%= link_to "New workout with #{@trainer.name}", new_trainer_workout_path(@trainer) %>

@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :trainers, only:[:new, :create, :index, :show] do
     resources :workouts, only: [:index, :new, :create, :show, :edit]
   end
-  resources :workouts, only: [:show]
+  resources :workouts, only: [:show,]
+  delete 'workout/delete', to: 'workouts#delete', as: :delete
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'

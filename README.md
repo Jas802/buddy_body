@@ -1,4 +1,6 @@
 To dos:
- list all trainers
- create trainer
- show trainer - link to create workout trainer_workout_path
+ Fix Omniauth
+ Fix workout delete button
+ Show Trainer's Workout Page
+ Add Styling
+ Fix Flash Messaging
