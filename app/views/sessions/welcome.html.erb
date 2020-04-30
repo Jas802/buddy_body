@@ -1,8 +1,10 @@
-<h1>Welcome To Buddy Boddy!</h1>
-
+<div class="jumbotron text-center">
+<h1> Welcome To Buddy Boddy! </h1>
+</div>
 <% if user_is_authenticated %>
     <h3>Hello, <%= current_user.username %></h3>
-    <%= link_to "Show Trainers", trainers_path %>
+    <%= link_to "Show Trainers", trainers_path %><br>
+    <%= link_to "Workouts", workouts_path %>
 <%end%>
 
 <%= button_to "Login", '/login', method: :get%>

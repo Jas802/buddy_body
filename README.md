@@ -1,6 +1,7 @@
 To dos:
- Fix Omniauth
+ <!-- Fix Omniauth
  Fix workout delete button
  Show Trainer's Workout Page
- Add Styling
  Fix Flash Messaging
+ Add Edit button for workouts
+ -->

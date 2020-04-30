@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   resources :trainers, only:[:new, :create, :index, :show] do
     resources :workouts, only: [:index, :new, :create, :show, :edit]
   end
-  resources :workouts, only: [:show,]
-  delete 'workout/delete', to: 'workouts#delete', as: :delete
+  resources :workouts, only: [:index, :show, :create]
+  delete 'workout/:id/delete', to: 'workouts#destroy', as: :delete
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
-  get 'welcome', to: 'sessions#welcome'
+  get '/welcome', to: 'sessions#welcome'
   delete 'session/delete', to: 'sessions#delete', as: :logout 
   get "/auth/github/callback" => "sessions#create_from_github"
 end

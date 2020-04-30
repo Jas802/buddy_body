@@ -11,4 +11,4 @@
         <%= f.submit "Sign up for this workout", class:"btn btn-light" %>
     <% end %>
   </div>
-  <%= button_to "Remove workout", delete_path %>
+  <%= button_to "Remove workout", delete_path(@workout), method: :delete%>
