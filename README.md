@@ -5,3 +5,7 @@ To dos:
  Fix Flash Messaging
  Add Edit button for workouts
  -->
+ Create Scope method
+ Associations
+ Variable scope
+ params hashs

@@ -18,13 +18,13 @@ class WorkoutsController < ApplicationController
       end
 
       def create
-        workout = Workout.create(workout_params)
+        workout = Workout.new(workout_params)
         workout.user = current_user
-        workout.trainer = params[:trainer_id]
+        workout.trainer = Trainer.find_by(id: params[:workout][:trainer_id])
         if workout.save
-          redirect_to workout_path(@workout)
+          redirect_to workout_path(workout)
         else
-        redirect_to new_workout_path
+          redirect_to new_trainer_workout_path(params[:workout][:trainer_id])
         end
       end
 
@@ -48,6 +48,8 @@ class WorkoutsController < ApplicationController
         :description,
         :length,
         :difficulty,
+        :user_id,
+        :trainer_id
       )
     end
 end
