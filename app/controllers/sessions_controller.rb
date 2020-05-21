@@ -14,9 +14,11 @@ class SessionsController < ApplicationController
       @user = User.find_by(username: params[:username])
       if @user && @user.authenticate(params[:password])
          session[:user_id] = @user.id
-         redirect_to user_path(@user), success: "Logged in successfully"
+         flash[:notice] = "Logged in successfully"
+         redirect_to user_path(@user)
       else
-         redirect_to new_user_path, danger: "Invalid username/password"
+          flash[:alert] = "Invalid username/password"
+          redirect_to new_user_path
       end
    end
 
@@ -35,7 +37,8 @@ class SessionsController < ApplicationController
   
     def delete
       session[:user_id] = nil
-      redirect_to root_path, info: "You have been logged out"
+      flash[:notice] = "You have been logged out"
+      redirect_to root_path
     end
 
     private

@@ -4,9 +4,9 @@ Rails.application.routes.draw do
     resources :workouts, only: [:index, :show]
   end
   resources :trainers, only:[:new, :create, :index, :show] do
-    resources :workouts, only: [:index, :new, :create, :show, :edit]
+    resources :workouts, only: [:index, :new, :create, :show, :edit, :update]
   end
-  resources :workouts, only: [:index, :show, :create]
+  resources :workouts, only: [:index, :show, :create, :edit, :update]
   delete 'workout/:id/delete', to: 'workouts#destroy', as: :delete
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
