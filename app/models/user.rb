@@ -5,6 +5,10 @@ class User < ApplicationRecord
     has_many :workouts
     has_many :trainers, :through => :workouts
 
+    def add_to_workouts
+      self.workouts <<@workout.id
+    end
+
     def self.create_with_omniauth(auth)
         create! do |user|
           user.provider = auth["provider"]

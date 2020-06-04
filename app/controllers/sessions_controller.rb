@@ -1,18 +1,18 @@
 class SessionsController < ApplicationController
+    include ApplicationHelper
     skip_before_action :require_login, only: [:new, :create, :welcome]
-    helper_method :user_is_authenticated
+
+    def welcome
+    end
   
     def new
       @user = User.new
       render 'login'
     end
-   
-    def welcome
-    end
   
     def create
-      @user = User.find_by(username: params[:username])
-      if @user && @user.authenticate(params[:password])
+      @user = User.find_by(username: params[:session][:username])
+      if @user && @user.authenticate(params[:session][:password])
          session[:user_id] = @user.id
          flash[:notice] = "Logged in successfully"
          redirect_to user_path(@user)

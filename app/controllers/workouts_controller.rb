@@ -1,4 +1,5 @@
 class WorkoutsController < ApplicationController
+  include ApplicationHelper
     def index
       @trainer = Trainer.find_by(id: params[:trainer_id])
       if @trainer

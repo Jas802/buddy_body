@@ -1,4 +1,5 @@
 class TrainersController < ApplicationController
+    include ApplicationHelper
     def index
         @trainers = Trainer.all
     end
